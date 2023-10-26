@@ -54,5 +54,7 @@ public class PokemonTest {
         System.out.println(Evoli.getNextNumber());
         System.out.println(Plinfa.getNextNumber());
         
+        //Testen von Trainer
+        Trainer t = new Trainer("Glenn","Zundel");
     }
 }
