@@ -53,6 +53,6 @@ public class PokemonTest {
         System.out.println("Neues Pokemon wurde erstellt, NextNumber müsste von allen Pokemons 3 sein: ");
         System.out.println(Evoli.getNextNumber());
         System.out.println(Plinfa.getNextNumber());
-        //ok
+        
     }
 }
