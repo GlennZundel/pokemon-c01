@@ -7,12 +7,16 @@ public class Pokemon {
     private int number;
     private static int nextNumber = 1;
 
+
+    private Trainer owner;
+
     //Konstruktor
     public Pokemon(String s, Type t){
         name = s;
         type = t;
         number = nextNumber;
         nextNumber++;
+        owner = null;
     }
 
     // Getters bla bla
@@ -45,6 +49,13 @@ public class Pokemon {
         this.type = type;
     }
 
+    public Trainer getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Trainer owner) {
+        this.owner = owner;
+    }
     public String toString(){
         String s = "This Pokemon is called " + getName() + " and is type " + getType() + ". It's ID is " + getNumber()+ ".";
         return s;

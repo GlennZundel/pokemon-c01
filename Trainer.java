@@ -40,8 +40,8 @@ public class Trainer {
     }
 
     // Füge Pokemon zur Liste des Trainers hinzu
-    // TODO: füge Klasse Pokemon Attribut Trainer hinzu, trage Trainer für Pokemon ein (dazu Trainer ID erstellen (?)
     public void LinkPokemonToTrainer(Pokemon p){
+        p.setOwner(this);
         PokemonList.add(p);
     }
 
@@ -55,40 +55,13 @@ public class Trainer {
     }
 
     // Erstelle String mit Pokemon geordnet nach Typ
-    //TODO: Überarbeite so, dass type als Arg übergeben wird und nur von diesem Typ ausgegeben wird
-    public String ListPokemonByType(){
-        ArrayList<Pokemon> PokemonFire = new ArrayList<Pokemon>();
-        ArrayList<Pokemon> PokemonWater = new ArrayList<Pokemon>();
-        ArrayList<Pokemon> PokemonPoison = new ArrayList<Pokemon>();
-        ArrayList<Pokemon> PokemonNormal = new ArrayList<Pokemon>();
+    public String ListPokemonByType(Type t){
 
+        String s = "";
         for (int i = 0; i < PokemonList.size(); i++){
-            switch(PokemonList.get(i).getType()){
-                case FIRE: PokemonFire.add(PokemonList.get(i));
-                    break;
-                case WATER: PokemonWater.add(PokemonList.get(i));
-                    break;
-                case NORMAL: PokemonNormal.add(PokemonList.get(i));
-                    break;
-                case POISON: PokemonPoison.add(PokemonList.get(i));
-                    break;
+            if(PokemonList.get(i).getType()==t){
+                s+= " "+PokemonList.get(i).getName();
             }
-        }
-        String s = "Fire: ";
-        for (int i = 0; i < PokemonFire.size(); i++){
-            s += PokemonFire.get(i).getName() + " ";
-        }
-        s += "\nWater: ";
-        for (int i = 0; i < PokemonWater.size(); i++){
-            s += PokemonWater.get(i).getName() + " ";
-        }
-        s += "\nNormal: ";
-        for (int i = 0; i < PokemonNormal.size(); i++){
-            s += PokemonNormal.get(i).getName() + " ";
-        }
-        s += "\nPoison: ";
-        for (int i = 0; i < PokemonPoison.size(); i++){
-            s += PokemonPoison.get(i).getName() + " ";
         }
         return s;
     }
@@ -103,8 +76,8 @@ public class Trainer {
         System.out.println(ListPokemonForTrainer());
     }
 
-    public void ListPokemonByTypeInTerminal(){
-        System.out.println(ListPokemonByType());
+    public void ListPokemonByTypeInTerminal(Type t){
+        System.out.println(ListPokemonByType(t));
     }
 
     public void showIthPokemonInTerminal(int i){

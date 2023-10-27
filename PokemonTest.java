@@ -1,5 +1,7 @@
 package de.uni.hd.isw.pokemon;
 
+import java.util.EventListenerProxy;
+
 public class PokemonTest {
     public static void main(String[] args) {
         // Testen vom Konstruktor & toString()
@@ -54,7 +56,25 @@ public class PokemonTest {
         System.out.println(Evoli.getNextNumber());
         System.out.println(Plinfa.getNextNumber());
         
-        //Testen von Trainer
+        //Testen von Trainer erstellen
         Trainer t = new Trainer("Glenn","Zundel");
+        System.out.println();
+        System.out.println("Testen von Konstruktor Trainer und von toString()");
+        System.out.println("Neuer Trainer wurde erstellt, firstname solle Glenn sein und lastname Zundel: ");
+        System.out.println(t.toString());
+
+        //Testen von linkPokemonToTrainer()
+        t.LinkPokemonToTrainer(Evoli);
+        t.LinkPokemonToTrainer(Plinfa);
+        System.out.println("Trainer sollte jetzt die Pokemon Flamara und Plinfa besitzen: ");
+        t.ListPokemonForTrainerInTerminal();
+        System.out.println("Jetzt sollten alle Pokemon des Trainers vom Typ Feuer (Flamara) erscheinen: ");
+        t.ListPokemonByTypeInTerminal(Type.FIRE);
+        System.out.println("Jetzt sollte das zweite Pokemon des Trainers (Plinfa) erscheinen: ");
+        t.showIthPokemonInTerminal(1);
+
+        //Testen von owner der Pokemon
+        System.out.println("Hier sollte jetzt der Besitzer von Flamara (vorher Evoli) erscheinen: ");
+        System.out.println(Evoli.getOwner());
     }
 }
