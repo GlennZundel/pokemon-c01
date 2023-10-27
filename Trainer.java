@@ -102,4 +102,5 @@ public class Trainer {
     public void showIthPokemonInTerminal(int i){
         System.out.println(showIthPokemon(i));
     }
+    //test
 }
