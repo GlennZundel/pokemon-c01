@@ -2,18 +2,18 @@ package de.uni.hd.isw.pokemon;
 import java.util.ArrayList;
 
 public class Trainer {
-
+    //Attribute
     private String firstname;
     private String lastname;
-
     private ArrayList<Pokemon> PokemonList = new ArrayList<Pokemon>();
 
-
+    //Konstruktor
     public Trainer(String fname, String lname){
         firstname = fname;
         lastname = lname;
     }
 
+    //Getter & Setter
     public String getFirstname() {
         return firstname;
     }
@@ -30,6 +30,7 @@ public class Trainer {
         this.lastname = lastname;
     }
 
+    //toString Operation
     @Override
     public String toString() {
         return "Trainer{" +
@@ -38,10 +39,13 @@ public class Trainer {
                 '}';
     }
 
+    // Füge Pokemon zur Liste des Trainers hinzu
+    // TODO: füge Klasse Pokemon Attribut Trainer hinzu, trage Trainer für Pokemon ein (dazu Trainer ID erstellen (?)
     public void LinkPokemonToTrainer(Pokemon p){
         PokemonList.add(p);
     }
 
+    // Erstelle String mit allen Pokemon, die zum Trainer gehören
     public String ListPokemonForTrainer(){
         String s = "";
         for (int i = 0; i < PokemonList.size(); i++){
@@ -50,6 +54,8 @@ public class Trainer {
         return s;
     }
 
+    // Erstelle String mit Pokemon geordnet nach Typ
+    //TODO: Überarbeite so, dass type als Arg übergeben wird und nur von diesem Typ ausgegeben wird
     public String ListPokemonByType(){
         ArrayList<Pokemon> PokemonFire = new ArrayList<Pokemon>();
         ArrayList<Pokemon> PokemonWater = new ArrayList<Pokemon>();
@@ -87,10 +93,12 @@ public class Trainer {
         return s;
     }
 
+    // Gib das ite Pokemon aus der Liste aus
     public String showIthPokemon(int i){
         return PokemonList.get(i).getName();
     }
 
+    // Hilfsfunktionen, gib die vorher erstellten Strings im Terminal aus
     public void ListPokemonForTrainerInTerminal(){
         System.out.println(ListPokemonForTrainer());
     }
