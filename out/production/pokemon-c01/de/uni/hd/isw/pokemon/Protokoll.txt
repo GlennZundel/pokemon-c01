@@ -1,0 +1,15 @@
+Protokoll für das Pairprogramming
+Session 1: Anna ist Driver, Glenn Navigator
+Wir erstellen die Klasse Trainer, mit firstname und lastname und einer ArrayList die mit Pokemon gefüllt wird
+Wir erstellen einen Konstruktor mit Parameter firstname und lastname.
+Getter und Setter wurden von AndroidStudio generiert, genauso wie die toString Methode.
+Dann haben wir die Methoden LinkPokemonToTrainer, ListPokemonForTrainer, ListPokemonByType und showIthPokemon programmiert.
+Alle geben einen String zurück. ListPokemonByType gibt einen String zurück der alle Pokemon nach Typen sortiert ausgibt (Überarbeitung
+siehe Session 2). Für die 4 Methoden gibt es jeweils noch eine Methode *InTerminal, die den String auf der Konsole ausibt.
+
+Session 2:
+Glenn ist Driver, Anna Navigatorin
+Wir überarbeiten die Methode "List Pokemon in Terminal by Type", so dass die Methode nun einen Type als Parameter bekommt
+und nur die Pokemon diesen Types ausgibt & fügen der Klasse Pokemon ein Attribut Trainer hinzu.
+Wir schreiben die Testcases für die Methoden "Link Pokemon to Trainer in Terminal", "List Pokemon for Trainer in Terminal",
+"List Pokemon for Trainer in Terminal by Type" & "Show ith Pokemon for Trainer in Terminal"

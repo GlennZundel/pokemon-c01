@@ -1,11 +1,15 @@
 package de.uni.hd.isw.pokemon;
 
+import java.util.ArrayList;
+
 public class Pokemon {
     // Attributes
     private String name;
     private Type type;
     private int number;
     private static int nextNumber = 1;
+    boolean IsSwapAllowed = true;
+    public ArrayList<Swap> Swaps = new ArrayList<Swap>();
 
 
     private Trainer owner;

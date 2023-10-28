@@ -5,7 +5,7 @@ public class Trainer {
     //Attribute
     private String firstname;
     private String lastname;
-    private ArrayList<Pokemon> PokemonList = new ArrayList<Pokemon>();
+    public ArrayList<Pokemon> PokemonList = new ArrayList<Pokemon>();
 
     //Konstruktor
     public Trainer(String fname, String lname){
