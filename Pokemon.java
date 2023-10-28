@@ -19,7 +19,7 @@ public class Pokemon {
         nextNumber++;
         owner = null;
         isSwapAllowed = a;
-        swaps = new ArrayList<Swap>();
+        swaps = new ArrayList<>();
     }
 
     // Getters
@@ -81,15 +81,14 @@ public class Pokemon {
     //methods
 
     public String toString(){
-        String s = "This Pokemon is called " + getName() + " and is type " + getType() + ". It's ID is " + getNumber()+ " and its trainer is "+ getOwner()+".";
-        return s;
+        return "This Pokemon is called " + getName() + " and is type " + getType() + ". It's ID is " + getNumber()+ " and its trainer is "+ getOwner()+".";
     }
 
     public static void main(String[] args){
         // Deklaration
-        Pokemon Relaxo;
+        Pokemon relaxo;
         // Initialisierung durch Aufurf des Konstruktors
-        Relaxo = new Pokemon("Relaxo", Type.NORMAL, true);
-        System.out.println(Relaxo.toString());
+        relaxo = new Pokemon("Relaxo", Type.NORMAL, true);
+        System.out.println(relaxo.toString());
     }
 }
