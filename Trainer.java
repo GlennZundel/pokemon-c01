@@ -33,10 +33,7 @@ public class Trainer {
     //toString Operation
     @Override
     public String toString() {
-        return "Trainer{" +
-                "firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                '}';
+        return firstname+ " "+lastname;
     }
 
     // Füge Pokemon zur Liste des Trainers hinzu
@@ -66,6 +63,14 @@ public class Trainer {
         return s;
     }
 
+    public void updateList(){
+        for(int i = 0; i < PokemonList.size(); i++){
+            if(PokemonList.get(i).getOwner() != this){
+                PokemonList.remove(i);
+            }
+        }
+    }
+
     // Gib das ite Pokemon aus der Liste aus
     public String showIthPokemon(int i){
         return PokemonList.get(i).getName();
@@ -73,7 +78,7 @@ public class Trainer {
 
     // Hilfsfunktionen, gib die vorher erstellten Strings im Terminal aus
     public void ListPokemonForTrainerInTerminal(){
-        System.out.println(ListPokemonForTrainer());
+        System.out.println(this.toString() +"s Pokemon: \n" + ListPokemonForTrainer());
     }
 
     public void ListPokemonByTypeInTerminal(Type t){

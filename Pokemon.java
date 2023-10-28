@@ -1,25 +1,29 @@
 package de.uni.hd.isw.pokemon;
-
+import java.util.ArrayList;
+import java.util.List;
 public class Pokemon {
     // Attributes
     private String name;
     private Type type;
     private int number;
     private static int nextNumber = 1;
-
-
+    private boolean isSwapAllowed;
+    private List<Swap> swaps;
     private Trainer owner;
 
     //Konstruktor
-    public Pokemon(String s, Type t){
+    public Pokemon(String s, Type t, boolean a){
         name = s;
         type = t;
         number = nextNumber;
         nextNumber++;
         owner = null;
+        isSwapAllowed = a;
+        swaps = new ArrayList<Swap>();
     }
 
-    // Getters bla bla
+    // Getters
+
     public String getName() {
         return name;
     }
@@ -36,7 +40,20 @@ public class Pokemon {
         return nextNumber;
     }
 
+    public Trainer getOwner() {
+        return owner;
+    }
+
+    public boolean getIsSwapAllowed(){
+        return isSwapAllowed;
+    }
+
+    public List<Swap> getSwaps(){
+        return swaps;
+    }
+
     //Setters
+
     public void setName(String name) {
         // "this" ist eine Referenz auf die Instanz, auf der die Methode
         // aufgerufen wurde, zb wenn ich den Namen von der Instanz Relaxo
@@ -49,15 +66,22 @@ public class Pokemon {
         this.type = type;
     }
 
-    public Trainer getOwner() {
-        return owner;
-    }
-
     public void setOwner(Trainer owner) {
         this.owner = owner;
     }
+
+    public void setIsSwapAllowed(boolean a){
+        this.isSwapAllowed = a;
+    }
+
+    public void addSwap(Swap s){
+        swaps.add(s);
+    }
+
+    //methods
+
     public String toString(){
-        String s = "This Pokemon is called " + getName() + " and is type " + getType() + ". It's ID is " + getNumber()+ ".";
+        String s = "This Pokemon is called " + getName() + " and is type " + getType() + ". It's ID is " + getNumber()+ " and its trainer is "+ getOwner()+".";
         return s;
     }
 
@@ -65,7 +89,7 @@ public class Pokemon {
         // Deklaration
         Pokemon Relaxo;
         // Initialisierung durch Aufurf des Konstruktors
-        Relaxo = new Pokemon("Relaxo", Type.NORMAL);
+        Relaxo = new Pokemon("Relaxo", Type.NORMAL, true);
         System.out.println(Relaxo.toString());
     }
 }
