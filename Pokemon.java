@@ -1,6 +1,11 @@
+/*
+* Pokemon
+* Copyright Glenn Zundel & Anna Schwegmann
+ */
+
 package de.uni.hd.isw.pokemon;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Pokemon {
     // Attributes
@@ -8,8 +13,8 @@ public class Pokemon {
     private Type type;
     private int number;
     private static int nextNumber = 1;
-    boolean IsSwapAllowed = true;
-    public ArrayList<Swap> Swaps = new ArrayList<Swap>();
+    private boolean isSwapAllowed = true;
+    private List<Swap> swaps = new ArrayList<>();
 
 
     private Trainer owner;
@@ -23,7 +28,7 @@ public class Pokemon {
         owner = null;
     }
 
-    // Getters bla bla
+    // Getters
     public String getName() {
         return name;
     }
@@ -40,10 +45,18 @@ public class Pokemon {
         return nextNumber;
     }
 
+    public List<Swap> getswaps(){
+        return swaps;
+    }
+
+    public boolean getSwapAllowed(){
+        return isSwapAllowed;
+    }
+
     //Setters
     public void setName(String name) {
         // "this" ist eine Referenz auf die Instanz, auf der die Methode
-        // aufgerufen wurde, zb wenn ich den Namen von der Instanz Relaxo
+        // aufgerufen wurde, zb wenn ich den Namen von der Instanz relaxo
         // ändern möchte und die setName Methode aufrufe ist sichergestellt,
         // das ich den Namen genau dieser Instanz ändere
         this.name = name;
@@ -60,16 +73,27 @@ public class Pokemon {
     public void setOwner(Trainer owner) {
         this.owner = owner;
     }
+
+    public void setswaps(Swap a){
+        swaps.add(a);
+    }
+    public void setSwapAllowed(){
+        isSwapAllowed = true;
+    }
+    public void setSwapNotAllowed(){
+        isSwapAllowed = false;
+    }
+
+
     public String toString(){
-        String s = "This Pokemon is called " + getName() + " and is type " + getType() + ". It's ID is " + getNumber()+ ".";
-        return s;
+        return "This Pokemon is called " + getName() + " and is type " + getType() + ". It's ID is " + getNumber()+ ".";
     }
 
     public static void main(String[] args){
         // Deklaration
-        Pokemon Relaxo;
+        Pokemon relaxo;
         // Initialisierung durch Aufurf des Konstruktors
-        Relaxo = new Pokemon("Relaxo", Type.NORMAL);
-        System.out.println(Relaxo.toString());
+        relaxo = new Pokemon("relaxo", Type.NORMAL);
+        System.out.println(relaxo.toString());
     }
 }

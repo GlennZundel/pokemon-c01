@@ -1,3 +1,8 @@
+/*
+ * Swap
+ * Copyright Glenn Zundel & Anna Schwegmann
+ */
+
 package de.uni.hd.isw.pokemon;
 
 class SwapException extends Exception{
@@ -14,24 +19,24 @@ class SwapException extends Exception{
 }
 public class Swap {
     //Attribute
-    Trainer t1;
-    Trainer t2;
-    Pokemon p1;
-    Pokemon p2;
-    java.util.Date Date;
-    String ID;
-    private static String nextNumber = "1";
+    private Trainer t1;
+    private Trainer t2;
+    private Pokemon p1;
+    private Pokemon p2;
+    private java.util.Date date;
+    private int id;
+    private static int nextNumber = 1;
 
     //Konstruktor
-    public Swap(Pokemon p_1, Trainer t_1, Pokemon p_2, Trainer t_2){
+    public Swap(Pokemon p01, Trainer t01, Pokemon p02, Trainer t02){
 
-        t1 = t_1;
-        p1 = p_1;
-        t2 = t_2;
-        p2 = p_2;
-        Date = new java.util.Date();
-        ID = nextNumber;
-        nextNumber = String.valueOf(Integer.valueOf(nextNumber) + 1);
+        t1 = t01;
+        p1 = p01;
+        t2 = t02;
+        p2 = p02;
+        date = new java.util.Date();
+        id = nextNumber;
+        nextNumber++;
     }
 
     @Override
@@ -41,12 +46,12 @@ public class Swap {
                 ", t2=" + t2 +
                 ", p1=" + p1 +
                 ", p2=" + p2 +
-                ", Date=" + Date +
-                ", ID='" + ID + '\'' +
+                ", Date=" + date +
+                ", id='" + id + '\'' +
                 '}';
     }
 
-    public void Execute() {
+    public void execute() {
         // check if t1 uneq t2
         try {
             if (t1 == t2) {
@@ -68,7 +73,7 @@ public class Swap {
         }
         // check if p1 is swappable
         try {
-            if (p1.IsSwapAllowed == false) {
+            if (!p1.getSwapAllowed()) {
                 throw new SwapException("Error: First Pokemon is not allowed to be swapped");
             }
         } catch (SwapException ex) {
@@ -87,7 +92,7 @@ public class Swap {
         }
         // check if p2 is swappable
         try {
-            if (p2.IsSwapAllowed == false) {
+            if (!p2.getSwapAllowed()) {
                 throw new SwapException("Error: Second Pokemon is not allowed to be swapped");
             }
         } catch (SwapException ex) {
@@ -97,11 +102,11 @@ public class Swap {
         //execute Swap
         p1.setOwner(t2);
         p2.setOwner(t1);
-        t1.PokemonList.remove(p1);
-        t2.PokemonList.remove(p2);
-        t1.PokemonList.add(p2);
-        t2.PokemonList.add(p1);
-        p1.Swaps.add(this);
-        p2.Swaps.add(this);
+        t1.removePokemonList(p1);
+        t2.removePokemonList(p2);
+        t1.addPokemonList(p2);
+        t2.addPokemonList(p1);
+        p1.setswaps(this);
+        p2.setswaps(this);
     }
 }

@@ -1,11 +1,11 @@
 package de.uni.hd.isw.pokemon;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Trainer {
     //Attribute
     private String firstname;
     private String lastname;
-    public ArrayList<Pokemon> PokemonList = new ArrayList<Pokemon>();
+    private List<Pokemon> pokemonList = new ArrayList<>();
 
     //Konstruktor
     public Trainer(String fname, String lname){
@@ -22,12 +22,23 @@ public class Trainer {
         return lastname;
     }
 
+    public List<Pokemon> getPokemonList() {
+        return pokemonList;
+    }
+
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public void addPokemonList(Pokemon p){
+        pokemonList.add(p);
+    }
+    public void removePokemonList(Pokemon p){
+        pokemonList.remove(p);
     }
 
     //toString Operation
@@ -40,48 +51,50 @@ public class Trainer {
     }
 
     // Füge Pokemon zur Liste des Trainers hinzu
-    public void LinkPokemonToTrainer(Pokemon p){
+    public void linkPokemonToTrainer(Pokemon p){
         p.setOwner(this);
-        PokemonList.add(p);
+        pokemonList.add(p);
     }
 
     // Erstelle String mit allen Pokemon, die zum Trainer gehören
-    public String ListPokemonForTrainer(){
-        String s = "";
-        for (int i = 0; i < PokemonList.size(); i++){
-            s += PokemonList.get(i).getName() + " ";
+    public String listPokemonForTrainer(){
+        StringBuilder s = new StringBuilder();
+        for (int i = 0; i < pokemonList.size(); i++){
+            s.append(pokemonList.get(i).getName());
+            s.append(" ");
         }
-        return s;
+        return s.toString();
     }
 
     // Erstelle String mit Pokemon geordnet nach Typ
-    public String ListPokemonByType(Type t){
+    public String listPokemonByType(Type t){
 
-        String s = "";
-        for (int i = 0; i < PokemonList.size(); i++){
-            if(PokemonList.get(i).getType()==t){
-                s+= " "+PokemonList.get(i).getName();
+        StringBuilder s = new StringBuilder();
+        for (int i = 0; i < pokemonList.size(); i++){
+            if(pokemonList.get(i).getType()==t){
+                s.append(pokemonList.get(i).getName());
+                s.append(" ");
             }
         }
-        return s;
+        return s.toString();
     }
 
     // Gib das ite Pokemon aus der Liste aus
     public String showIthPokemon(int i){
-        return PokemonList.get(i).getName();
+        return pokemonList.get(i).getName();
     }
 
     // Hilfsfunktionen, gib die vorher erstellten Strings im Terminal aus
-    public void ListPokemonForTrainerInTerminal(){
-        System.out.println(ListPokemonForTrainer());
+    public void listPokemonForTrainerInTerminal(){
+        System.out.println(listPokemonForTrainer());
     }
 
-    public void ListPokemonByTypeInTerminal(Type t){
-        System.out.println(ListPokemonByType(t));
+    public void listPokemonByTypeInTerminal(Type t){
+        System.out.println(listPokemonByType(t));
     }
 
     public void showIthPokemonInTerminal(int i){
         System.out.println(showIthPokemon(i));
     }
-    //test
+
 }
