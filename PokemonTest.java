@@ -67,6 +67,23 @@ public class PokemonTest {
         System.out.println("Neuer Trainer wurde erstellt, firstname solle Glenn sein und lastname Zundel: ");
         System.out.println(t1.toString());
 
+        // Testen von getter & Setter
+        // Testen von getName()
+        System.out.println();
+        System.out.println("Testen von getName");
+        System.out.println("Name von Trainer Glenn:");
+        System.out.println(t1.getFirstname());
+        System.out.println(t1.getLastname());
+
+        // Testen von setName()
+        System.out.println();
+        System.out.println("Testen von setName");
+        System.out.println("Alter Name: ");
+        System.out.println(t1.getFirstname());
+        t1.setFirstname("Glenni");
+        System.out.println("Neuer Name: ");
+        System.out.println(t1.getFirstname());
+
         //Testen von linkPokemonToTrainer()
         t1.linkPokemonToTrainer(evoli);
         t1.linkPokemonToTrainer(plinfa);
@@ -112,6 +129,12 @@ public class PokemonTest {
 
         System.out.println();
         //Testen der Exceptions
+        System.out.println("Trainer ist null");
+        Swap swaptest = new Swap(plinfa, null, evoli, t1);
+        swaptest.execute();
+
+
+
         System.out.println("Exception: Pokemon haben gleichen Trainer");
         Pokemon relaxo = new Pokemon("relaxo", Type.NORMAL);
         t2.linkPokemonToTrainer(relaxo);
