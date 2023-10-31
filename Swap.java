@@ -52,6 +52,14 @@ public class Swap {
     }
 
     public void execute() {
+        try {
+            if (t1 == null || t2 == null) {
+                throw new SwapException("Error: Trainer does not exist");
+            }
+        } catch(SwapException ex) {
+            System.out.println(ex);
+            return;
+        }
         // check if t1 uneq t2
         try {
             if (t1 == t2) {
