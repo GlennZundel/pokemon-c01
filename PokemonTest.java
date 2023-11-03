@@ -6,7 +6,7 @@ public class PokemonTest {
     public static void main(String[] args) {
         // Testen vom Konstruktor & toString()
         Pokemon evoli;
-        evoli = new Pokemon("Evoli", Type.NORMAL, true);
+        evoli = new Pokemon("Evoli", Type.WATER, true);
         System.out.println("Testen vom Konstruktor & toString()");
         System.out.println("Hier sollte stehen: This Pokemon is called Evoli and is type NORMAL. It's ID is 1");
         System.out.println(evoli.toString());
@@ -106,5 +106,15 @@ public class PokemonTest {
         System.out.println("Beide Pokemon sollten jetzt nur jeweils einen Swap mit der ID 1 haben:");
         System.out.println(p1.getSwaps().get(0).toString());
         System.out.println(p3.getSwaps().get(0).toString());
+
+        //Testen von Competition
+        Competition c1 = new Competition();
+        System.out.println("Competition sollte nicht funktionieren, da p1 und p2 dem selben Trainer gehören: ");
+        c1.execute(p1, p2);
+        System.out.println("Nun sollen Panflam und Garados kämpfen:");
+        c1.execute(p1, p3);
+        System.out.println("Der Verlierer sollte nun sein Pokemon an den Gewinner verloren haben: ");
+        t1.listPokemonForTrainerInTerminal();
+        t2.listPokemonForTrainerInTerminal();
     }
 }

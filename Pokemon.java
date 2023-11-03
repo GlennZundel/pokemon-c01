@@ -9,6 +9,7 @@ public class Pokemon {
     private static int nextNumber = 1;
     private boolean isSwapAllowed;
     private List<Swap> swaps;
+    private List<Competition> competitions;
     private Trainer owner;
 
     //Konstruktor
@@ -20,6 +21,7 @@ public class Pokemon {
         owner = null;
         isSwapAllowed = a;
         swaps = new ArrayList<>();
+        competitions = new ArrayList<>();
     }
 
     // Getters
@@ -52,6 +54,8 @@ public class Pokemon {
         return swaps;
     }
 
+    public List<Competition> getCompetitions(){return competitions;}
+
     //Setters
 
     public void setName(String name) {
@@ -78,6 +82,10 @@ public class Pokemon {
         swaps.add(s);
     }
 
+    public void addCompetition(Competition s){
+        competitions.add(s);
+    }
+
     //methods
 
     public String toString(){
@@ -88,7 +96,7 @@ public class Pokemon {
         // Deklaration
         Pokemon relaxo;
         // Initialisierung durch Aufurf des Konstruktors
-        relaxo = new Pokemon("Relaxo", Type.NORMAL, true);
+        relaxo = new Pokemon("Relaxo", Type.WATER, true);
         System.out.println(relaxo.toString());
     }
 }

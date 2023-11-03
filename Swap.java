@@ -3,13 +3,13 @@ package de.uni.hd.isw.pokemon;
 import java.util.Date;
 public class Swap {
 
-    private Trainer t1;
-    private Trainer t2;
-    private Pokemon p1;
-    private Pokemon p2;
-    private String iD;
-    private Date dateOfTrade;
-    private static int tradeID = 1;
+    protected Trainer t1;
+    protected Trainer t2;
+    protected Pokemon p1;
+    protected Pokemon p2;
+    protected String iD;
+    protected Date dateOfTrade;
+    protected static int tradeID = 1;
 
     public Swap(){
         t1 = t2 = null;
@@ -26,7 +26,7 @@ public class Swap {
         return tradeID-1;
     }
     public void execute(Pokemon p01, Pokemon p02){
-        iD = "ID:"+getTradeID();
+
         p1 = p01;
         p2 = p02;
         if((t1 = p01.getOwner()) == null || (t2 = p02.getOwner()) == null){
@@ -37,6 +37,7 @@ public class Swap {
             System.out.println("Pokemon "+(!(p1.getIsSwapAllowed()) ? p1.getName() : p2.getName())+" ist nicht zum Tauschen freigegeben");
         }
         else{
+            iD = "ID:"+getTradeID();
             dateOfTrade = new Date();
             t1.linkPokemonToTrainer(p2);
             t2.linkPokemonToTrainer(p1);
