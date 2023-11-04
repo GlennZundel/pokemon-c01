@@ -15,7 +15,7 @@ public class Pokemon {
     private static int nextNumber = 1;
     private boolean isSwapAllowed = true;
     private List<Swap> swaps = new ArrayList<>();
-
+    private List<Competition> competitions = new ArrayList<>();
 
     private Trainer owner;
 
@@ -48,6 +48,7 @@ public class Pokemon {
     public List<Swap> getswaps(){
         return swaps;
     }
+    public List<Competition> getCompetitions(){return competitions;}
 
     public boolean getSwapAllowed(){
         return isSwapAllowed;
@@ -83,7 +84,9 @@ public class Pokemon {
     public void setSwapNotAllowed(){
         isSwapAllowed = false;
     }
-
+    public void setcompetitions(Competition a){
+        competitions.add(a);
+    }
 
     public String toString(){
         return "This Pokemon is called " + getName() + " and is type " + getType() + ". It's ID is " + getNumber()+ ".";

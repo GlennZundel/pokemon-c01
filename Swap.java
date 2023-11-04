@@ -19,25 +19,26 @@ class SwapException extends Exception{
 }
 public class Swap {
     //Attribute
-    private Trainer t1;
-    private Trainer t2;
-    private Pokemon p1;
-    private Pokemon p2;
-    private java.util.Date date;
-    private int id;
-    private static int nextNumber = 1;
+    protected Trainer t1;
+    protected Trainer t2;
+    protected Pokemon p1;
+    protected Pokemon p2;
+    protected java.util.Date date;
+    protected int id;
+    protected static int nextNumber = 1;
 
-    //Konstruktor
-    public Swap(Pokemon p01, Trainer t01, Pokemon p02, Trainer t02){
+    //Konstruktoren
+    public Swap(Pokemon p01, Pokemon p02){
 
-        t1 = t01;
+        t1 = p01.getOwner();
         p1 = p01;
-        t2 = t02;
+        t2 = p02.getOwner();
         p2 = p02;
         date = new java.util.Date();
         id = nextNumber;
         nextNumber++;
     }
+    public Swap(){}
 
     @Override
     public String toString() {

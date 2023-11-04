@@ -103,7 +103,7 @@ public class PokemonTest {
         //Testen von Swap.java
         // Testen vom Konstruktor
         Swap tausch1;
-        tausch1 = new Swap(evoli, t1, plinfa, t2);
+        tausch1 = new Swap(evoli, plinfa);
         System.out.println();
         System.out.println("Testen vom Konstruktor & toString()");
         System.out.println("Hier sollte stehen: beide Trainer und Pokemon, Datum und ID");
@@ -130,7 +130,8 @@ public class PokemonTest {
         System.out.println();
         //Testen der Exceptions
         System.out.println("Trainer ist null");
-        Swap swaptest = new Swap(plinfa, null, evoli, t1);
+        Pokemon flemmli = new Pokemon("Flemmli", Type.FIRE);
+        Swap swaptest = new Swap(flemmli, evoli);
         swaptest.execute();
 
 
@@ -138,7 +139,7 @@ public class PokemonTest {
         System.out.println("Exception: Pokemon haben gleichen Trainer");
         Pokemon relaxo = new Pokemon("relaxo", Type.NORMAL);
         t2.linkPokemonToTrainer(relaxo);
-        Swap tauschGleicherOwner = new Swap(evoli, t2, relaxo, t2);
+        Swap tauschGleicherOwner = new Swap(evoli, relaxo);
         tauschGleicherOwner.execute();
         // Kontrolle, dass Pokemon immer noch beide zu t2 gehören
         System.out.println("p1 ist in der Liste von t2 = " + t2.getPokemonList().contains(evoli));
@@ -147,44 +148,58 @@ public class PokemonTest {
         System.out.println("owner von p1 ist immer noch t2 (Anna) =" + evoli.getOwner());
         System.out.println("owner von p2 ist immer noch t2 (Anna) = " + relaxo.getOwner());
 
-        //Exception 2: p1 gehört nicht zu t1
-        System.out.println();
-        System.out.println("Exception: Pokemon p1 gehört nicht t1");
         Trainer bugCatcher = new Trainer("Karl", "Bug Catcher");
         Pokemon raupy = new Pokemon("raupy", Type.INSECT);
         bugCatcher.linkPokemonToTrainer(raupy);
-        Swap p1Nichtt1 = new Swap(raupy, t1, evoli, t2);
-        p1Nichtt1.execute();
         String controlNoSwap = "Kontrolle, dass kein Tausch durchgeführt wurde: ";
-        System.out.println(controlNoSwap);
 
-        System.out.println(p2BelongsToT2 + t2.getPokemonList().contains(evoli));
-
-        //Exception 3: p1 ist nicht swappable
+        //Exception 2: p1 ist nicht swappable
         System.out.println();
         System.out.println("Exception: Pokemon p1 ist nicht swappable");
         raupy.setSwapNotAllowed();
-        Swap p1NoSwapAllowed = new Swap(raupy, bugCatcher, evoli, t2);
+        Swap p1NoSwapAllowed = new Swap(raupy, evoli);
         p1NoSwapAllowed.execute();
         System.out.println(controlNoSwap);
         System.out.println(p2BelongsToT2 + t2.getPokemonList().contains(relaxo));
 
-        //Exception 4: p2 gehört nicht t2
-        System.out.println();
-        System.out.println("Exception: Pokemon p2 gehört nicht t2");
-        Swap p2Nichtt2 = new Swap(raupy, bugCatcher, evoli, t1);
-        p2Nichtt2.execute();
-        System.out.println(controlNoSwap);
-        System.out.println("p1 ist in der Liste von t1 = " + bugCatcher.getPokemonList().contains(raupy));
-
-        //Exception 5: p2 ist nicht swappable
+        //Exception 3: p2 ist nicht swappable
         System.out.println();
         System.out.println("Exception: Pokemon p2 ist nicht swappable");
         relaxo.setSwapNotAllowed();
-        Swap p2NoSwapAllowed = new Swap(plinfa, t1, relaxo, t2);
+        Swap p2NoSwapAllowed = new Swap(plinfa, relaxo);
         p2NoSwapAllowed.execute();
         System.out.println("Kontrolle, dass kein Tausch durchgeführt wurde: ");
         System.out.println("p2 ist in der Liste von t2 = " + t2.getPokemonList().contains(relaxo));
 
+        System.out.println();
+        System.out.println("Testen von Competition, Flemmli vs Flamara");
+        bugCatcher.linkPokemonToTrainer(flemmli);
+        Competition c1 = new Competition(flemmli, evoli);
+        System.out.println(c1.toString());
+        c1.execute();
+        System.out.println("Besitzer von Flemmli");
+        System.out.println(flemmli.getOwner());
+        System.out.println("Besitzer von Flamara");
+        System.out.println(evoli.getOwner());
+        System.out.println("Haben Pokemon Competition in ihrer Liste? Müsste 1 sein");
+        System.out.println(flemmli.getCompetitions().size());
+
+        System.out.println();
+        System.out.println("Testen der Exception Pokemon gehören gleichem Trainer");
+        bugCatcher.linkPokemonToTrainer(flemmli);
+        Competition c2 = new Competition(flemmli, raupy);
+        c2.execute();
+
+        System.out.println();
+        System.out.println("Testen der Exception Pokemon gehört keinem Trainer");
+        Pokemon hydropi =  new Pokemon("Hydropi", Type.WATER);
+        Competition c3 = new Competition(hydropi, flemmli);
+        c3.execute();
+
+        System.out.println();
+        t2.linkPokemonToTrainer(hydropi);
+        System.out.println("Feuerpokemon gegen Wasserpokemon");
+        Competition c4 = new Competition(hydropi, flemmli);
+        c4.execute();
     }
 }
