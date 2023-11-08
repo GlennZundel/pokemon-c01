@@ -1,0 +1,23 @@
+
+j
+:app/src/main/java/com/main/pokemonmanager/Competition.java,a\4\a4f31403ea36760a926c534d0cc3b1c3d029b460
+c
+3app/src/main/java/com/main/pokemonmanager/Type.java,9\c\9c56fe67fd7491fa5b7fc57e695e6bf4d233f340
+>
+app/.gitignore,5\1\51e1c5d383dfaa35e0e7e5873a0a99355a86880f
+c
+3app/src/main/java/com/main/pokemonmanager/Swap.java,3\6\369fa8f60560ec157a7bbbcfd42823fb50b7674f
+D
+app/build.gradle.kts,d\2\d2a4383452aad84a18429a5844d31330a012a9e6
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+h
+8app/src/main/java/com/main/pokemonmanager/main_list.java,f\5\f52fadbf3794c5f938ae39ef776cfc26d015823f
+j
+:app/src/main/java/com/main/pokemonmanager/PokemonTest.java,a\5\a5f4a015bd88c39b77780f3363c941ca6165abaa
+f
+6app/src/main/java/com/main/pokemonmanager/Trainer.java,a\b\abaeb32125d73c5f744bf72d1d0496b48521e7f2
+f
+6app/src/main/java/com/main/pokemonmanager/Pokemon.java,9\3\9325aefe3fdc9c84a9e8f4ef4429a7fd28b8c889
+z
+Japp/src/main/java/com/main/pokemonmanager/adapter/SimpleStringAdapter.java,3\7\37fe2d1662c34785370ee2748d74d578ee2f8509
