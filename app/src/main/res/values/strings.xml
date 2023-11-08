@@ -47,4 +47,5 @@
     <string name="firstname">First name</string>
     <string name="lastname">Last name</string>
     <string name="warning_non_empty_name">first and last name must be non-empty</string>
+    <string name="title_activity_input_window">inputWindow</string>
 </resources>
