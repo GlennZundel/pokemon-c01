@@ -21,7 +21,7 @@ import java.util.Locale;
 import de.uhd.ifi.pokemonmanager.R;
 import de.uhd.ifi.pokemonmanager.data.Pokemon;
 import de.uhd.ifi.pokemonmanager.storage.SerialStorage;
-import de.uhd.ifi.pokemonmanager.ui.DetailActivity;
+//import de.uhd.ifi.pokemonmanager.ui.DetailActivity;
 import de.uhd.ifi.pokemonmanager.ui.MainActivity;
 
 /**
