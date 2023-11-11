@@ -1,9 +1,12 @@
 package de.uhd.ifi.pokemonmanager.ui;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
@@ -32,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton addPokemonButton;
 
+    private FloatingActionButton deleteButton;
+
+    private TextView TextPokemonName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,21 +61,51 @@ public class MainActivity extends AppCompatActivity {
         pokemonList.setAdapter(pokemonAdapter);
     }
 
+    public void openDialog()  {
+        create_pokemon_dialogue create_dialogue = new create_pokemon_dialogue();
+        create_dialogue.show(getSupportFragmentManager(), "create pokemon");
+    }
     private void initUI() {
-        // OnClickListener through implementation of interface (anonymous class).
         addPokemonButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(MainActivity.this, inputWindow.class);
-                startActivity(intent);
+                openDialog();
                 //TODO: implement create Pokemon.
+
                 // The pokemon needs to be added to the storage.
                 // Don't forget to refresh pokemonAdapter.
+                pokemonAdapter.refresh();
                 //BONUS: if no Trainers are in Storage the App kinda crashes - how do we prevent that
             }
         });
+
+
+
+        deleteButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                builder.setMessage("Do you want to delete this Pokemon?").setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        List<Pokemon> pokemon = STORAGE.getAllPokemons();
+                        TextView id = view.findViewById(R.id.pokemonId);
+                        STORAGE.remove(pokemon.get(Integer.parseInt((String) id.getText())));
+                        pokemonAdapter.refresh();
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //
+                    }
+                });
+                AlertDialog mDialog = builder.create();
+                mDialog.show();
+            }
+        });
     }
+
 
     /**
      * Creates three sample {@link Pokemon} if none are in storage.
