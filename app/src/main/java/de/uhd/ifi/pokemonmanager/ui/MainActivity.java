@@ -4,6 +4,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -34,10 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private PokemonAdapter pokemonAdapter;
 
     private FloatingActionButton addPokemonButton;
+    private ImageView deleteButton;
 
-    private FloatingActionButton deleteButton;
-
-    private TextView TextPokemonName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         pokemonList = findViewById(R.id.pokemonList);
         addPokemonButton = findViewById(R.id.addPokemonButton);
-
         STORAGE.loadAll(this);
         setupList();
         initUI();
@@ -61,24 +60,29 @@ public class MainActivity extends AppCompatActivity {
         pokemonList.setAdapter(pokemonAdapter);
     }
 
-    public void openDialog()  {
-        create_pokemon_dialogue create_dialogue = new create_pokemon_dialogue();
-        create_dialogue.show(getSupportFragmentManager(), "create pokemon");
-    }
+
     private void initUI() {
         addPokemonButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                openDialog();
                 //TODO: implement create Pokemon.
+                Pokemon p1 = new Pokemon("place_holder_name", Type.FIRE);
+                //find first Trainer in Storage and set as new trainer
+                List<Trainer> trainers = STORAGE.getAllTrainers();
+                Trainer t1 = trainers.get(0);
+                p1.setTrainer(t1);
 
-                // The pokemon needs to be added to the storage.
-                // Don't forget to refresh pokemonAdapter.
+                // add new Pokemon to Trainer
+                t1.addPokemon(p1);
+                //The pokemon needs to be added to the storage.
+                STORAGE.save(p1);
+                //Don't forget to refresh pokemonAdapter.
                 pokemonAdapter.refresh();
                 //BONUS: if no Trainers are in Storage the App kinda crashes - how do we prevent that
             }
         });
+
 
 
 
