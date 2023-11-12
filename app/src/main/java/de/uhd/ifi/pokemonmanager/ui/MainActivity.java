@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         List<Pokemon> pokemons = STORAGE.getAllPokemons();
         pokemonAdapter = new PokemonAdapter(this, pokemons);
         RecyclerView.LayoutManager manager = RecyclerViewUtil.createLayoutManager(this);
-
+        deleteButton = findViewById(R.id.deleteButton);
         pokemonList.setLayoutManager(manager);
         pokemonList.setAdapter(pokemonAdapter);
     }
@@ -83,31 +83,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-        deleteButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                builder.setMessage("Do you want to delete this Pokemon?").setPositiveButton("Delete", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        List<Pokemon> pokemon = STORAGE.getAllPokemons();
-                        TextView id = view.findViewById(R.id.pokemonId);
-                        STORAGE.remove(pokemon.get(Integer.parseInt((String) id.getText())));
-                        pokemonAdapter.refresh();
-                    }
-                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //
-                    }
-                });
-                AlertDialog mDialog = builder.create();
-                mDialog.show();
-            }
-        });
     }
 
 
